@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Names = () => {
   const [person, setPerson] = useState(null);
@@ -8,6 +8,10 @@ const Names = () => {
     const result = await response.json();
     setPerson(result.results[0]);
   };
+
+  useEffect(() => {
+    fetchPerson();
+  }, []);
 
   return (
     <>
