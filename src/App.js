@@ -1,18 +1,10 @@
-import { useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+
 import "./App.css";
-import { Link } from "react-router-dom";
+import Names from "./Names";
+import Counter from "./Counter";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const increment = () => {
-    setCount(count + 1);
-  };
-
-  const decrement = () => {
-    setCount(count - 1);
-  };
-
   return (
     <>
       <nav className="Nav">
@@ -24,11 +16,10 @@ function App() {
         </Link>
       </nav>
       <div className="App">
-        Compte :{" "}
-        <span className={count > 5 ? "Count-too-high" : ""}>{count}</span>
-        <br />
-        <button onClick={increment}>Incrémenter</button>
-        <button onClick={decrement}>Décrémenter</button>
+        <Routes>
+          <Route path="/names" Component={Names} />
+          <Route path="/" Component={Counter} />
+        </Routes>
       </div>
     </>
   );
